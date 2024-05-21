@@ -155,11 +155,11 @@ function Set-{{{apiNamePrefix}}}Configuration {
         }
 
         If ($Cookie) {
-            $Script:Configuration['Cookie'] = ConvertObjectTo-SecureString -InputVar $Cookie -Password 'Cookie'
+            $Script:Configuration['Cookie'] = ConvertObjectTo-SecureString -InputVar $Cookie -InputVarName 'Cookie'
         }
 
         If ($AccessToken) {
-            $Script:Configuration['AccessToken'] = ConvertObjectTo-SecureString -InputVar $AccessToken -Password 'AccessToken'
+            $Script:Configuration['AccessToken'] = ConvertObjectTo-SecureString -InputVar $AccessToken -InputVarName 'AccessToken'
         }
 
         If ($SkipCertificateCheck.IsPresent) {
