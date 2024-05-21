@@ -64,7 +64,7 @@ function Test-PSClassname {
         $LocalVarBodyParameter = $Client | ConvertTo-Json -Depth 100
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["api_key_query_name"]) {
-            $LocalVarQueryParameters['api_key_query_name'] = $Configuration["ApiKey"]["api_key_query_name"]
+            $LocalVarQueryParameters['api_key_query_name'] = $Configuration["ApiKeyPrefix"]["api_key_query_name"] + (CompatibleConvertFrom-SecureString -SecureString $Configuration["ApiKey"]["api_key_query_name"])
             Write-Verbose ("Using API key `api_key_query_name` in the URL query for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 

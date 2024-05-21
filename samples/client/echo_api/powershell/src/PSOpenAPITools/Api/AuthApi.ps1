@@ -50,7 +50,7 @@ function Test-AuthHttpBasic {
         $LocalVarUri = '/auth/http/basic'
 
         if ($Configuration["Username"] -and $Configuration["Password"]) {
-            $LocalVarBytes = [System.Text.Encoding]::UTF8.GetBytes($Configuration["Username"] + ":" + $Configuration["Password"])
+            $LocalVarBytes = [System.Text.Encoding]::UTF8.GetBytes($Configuration["Username"] + ":" + (CompatibleConvertFrom-SecureString -SecureString $Configuration["Password"]))
             $LocalVarBase64Text =[Convert]::ToBase64String($LocalVarBytes)
             $LocalVarHeaderParameters['Authorization'] = "Basic " + $LocalVarBase64Text
             Write-Verbose ("Using HTTP basic authentication in {0}" -f $MyInvocation.MyCommand)
@@ -120,7 +120,7 @@ function Test-AuthHttpBearer {
         $LocalVarUri = '/auth/http/bearer'
 
         if ($Configuration["AccessToken"]) {
-            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + (CompatibleConvertFrom-SecureString -SecureString $Configuration["AccessToken"])
             Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
         }
 

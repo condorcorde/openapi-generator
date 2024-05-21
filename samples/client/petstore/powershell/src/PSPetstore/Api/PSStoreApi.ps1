@@ -119,7 +119,7 @@ function Get-PSInventory {
         $LocalVarUri = '/store/inventory'
 
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["api_key_name"]) {
-            $LocalVarHeaderParameters['api_key_name'] = $Configuration["ApiKey"]["api_key_name"]
+            $LocalVarHeaderParameters['api_key_name'] = $Configuration["ApiKeyPrefix"]["api_key_name"] + (CompatibleConvertFrom-SecureString -SecureString $Configuration["ApiKey"]["api_key_name"])
             Write-Verbose ("Using API key 'api_key_name' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
