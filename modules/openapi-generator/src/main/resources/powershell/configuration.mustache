@@ -187,29 +187,6 @@ function Set-{{{apiNamePrefix}}}Configuration {
     }
 }
 
-#
-# Convert input parameter into System.System.Security.SecureString
-#
-function ConvertObjectTo-SecureString {
-    [CmdletBinding()]
-    Param(
-        [System.Object]$InputVar,
-        [string]$InputVarName
-    )
-
-    switch ($InputVar.GetType().FullName) {
-        'System.System.Security.SecureString' {
-            return $InputVar 
-        }
-        'System.String' {
-            return ConvertTo-SecureString -String $InputVar -AsPlainText -Force
-        }
-        default {
-            throw "Invalid argument for parameter '$InputVarName'. Valid types are 'System.String' or 'System.System.Security.SecureString'"
-        }
-    }
-}
-
 <#
 .SYNOPSIS
 
