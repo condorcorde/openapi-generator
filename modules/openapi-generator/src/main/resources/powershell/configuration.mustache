@@ -114,13 +114,13 @@ function Set-{{{apiNamePrefix}}}Configuration {
         [AllowEmptyString()]
         [string]$Username,
         [AllowEmptyString()]
-        [string]$Password,
+        [System.Object]$Password,
         [hashtable]$ApiKey,
         [hashtable]$ApiKeyPrefix,
         [AllowEmptyString()]
-        [string]$Cookie,
+        [System.Object]$Cookie,
         [AllowEmptyString()]
-        [string]$AccessToken,
+        [System.Object]$AccessToken,
         [switch]$SkipCertificateCheck,
         [hashtable]$DefaultHeaders,
         [System.Object]$Proxy,
@@ -143,7 +143,7 @@ function Set-{{{apiNamePrefix}}}Configuration {
         }
 
         If ($Password) {
-            $Script:Configuration['Password'] = $Password
+            $Script:Configuration['Password'] = ConvertObjectTo-SecureString -InputVar $Password -InputVarName 'Password'
         }
 
         If ($ApiKey) {
@@ -155,11 +155,11 @@ function Set-{{{apiNamePrefix}}}Configuration {
         }
 
         If ($Cookie) {
-            $Script:Configuration['Cookie'] = $Cookie
+            $Script:Configuration['Cookie'] = ConvertObjectTo-SecureString -InputVar $Cookie -Password 'Cookie'
         }
 
         If ($AccessToken) {
-            $Script:Configuration['AccessToken'] = $AccessToken
+            $Script:Configuration['AccessToken'] = ConvertObjectTo-SecureString -InputVar $AccessToken -Password 'AccessToken'
         }
 
         If ($SkipCertificateCheck.IsPresent) {
@@ -183,6 +183,29 @@ function Set-{{{apiNamePrefix}}}Configuration {
 
         If ($PassThru.IsPresent) {
             $Script:Configuration
+        }
+    }
+}
+
+#
+# Convert input parameter into System.System.Security.SecureString
+#
+function ConvertObjectTo-SecureString {
+    [CmdletBinding()]
+    Param(
+        [System.Object]$InputVar,
+        [string]$InputVarName
+    )
+
+    switch ($InputVar.GetType().FullName) {
+        'System.System.Security.SecureString' {
+            return $InputVar 
+        }
+        'System.String' {
+            return ConvertTo-SecureString -String $InputVar -AsPlainText -Force
+        }
+        default {
+            throw "Invalid argument for parameter '$InputVarName'. Valid types are 'System.String' or 'System.System.Security.SecureString'"
         }
     }
 }
@@ -211,13 +234,13 @@ function Set-{{{apiNamePrefix}}}ConfigurationApiKey {
     Param(
         [string]$Id,
         [AllowEmptyString()]
-        [string]$ApiKey
+        [System.Object]$ApiKey
     )
     Process {
         if (!$Script:Configuration["ApiKey"]) {
             $Script:Configuration["ApiKey"] = @{}
         }
-        $Script:Configuration["ApiKey"][$Id] = $ApiKey
+        $Script:Configuration["ApiKey"][$Id] = ConvertObjectTo-SecureString -InputVar $ApiKey -InputVarName 'ApiKey'
     }
 }
 
