@@ -121,13 +121,13 @@ function Set-Configuration {
         [AllowEmptyString()]
         [string]$Username,
         [AllowEmptyString()]
-        [string]$Password,
+        [System.Object]$Password,
         [hashtable]$ApiKey,
         [hashtable]$ApiKeyPrefix,
         [AllowEmptyString()]
-        [string]$Cookie,
+        [System.Object]$Cookie,
         [AllowEmptyString()]
-        [string]$AccessToken,
+        [System.Object]$AccessToken,
         [switch]$SkipCertificateCheck,
         [hashtable]$DefaultHeaders,
         [System.Object]$Proxy,
@@ -150,7 +150,7 @@ function Set-Configuration {
         }
 
         If ($Password) {
-            $Script:Configuration['Password'] = $Password
+            $Script:Configuration['Password'] = ConvertObjectTo-SecureString -InputVar $Password -InputVarName 'Password'
         }
 
         If ($ApiKey) {
@@ -162,11 +162,11 @@ function Set-Configuration {
         }
 
         If ($Cookie) {
-            $Script:Configuration['Cookie'] = $Cookie
+            $Script:Configuration['Cookie'] = ConvertObjectTo-SecureString -InputVar $Cookie -InputVarName 'Cookie'
         }
 
         If ($AccessToken) {
-            $Script:Configuration['AccessToken'] = $AccessToken
+            $Script:Configuration['AccessToken'] = ConvertObjectTo-SecureString -InputVar $AccessToken -InputVarName 'AccessToken'
         }
 
         If ($SkipCertificateCheck.IsPresent) {
@@ -218,13 +218,13 @@ function Set-ConfigurationApiKey {
     Param(
         [string]$Id,
         [AllowEmptyString()]
-        [string]$ApiKey
+        [System.Object]$ApiKey
     )
     Process {
         if (!$Script:Configuration["ApiKey"]) {
             $Script:Configuration["ApiKey"] = @{}
         }
-        $Script:Configuration["ApiKey"][$Id] = $ApiKey
+        $Script:Configuration["ApiKey"][$Id] = ConvertObjectTo-SecureString -InputVar $ApiKey -InputVarName 'ApiKey'
     }
 }
 
