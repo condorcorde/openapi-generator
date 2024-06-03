@@ -572,7 +572,7 @@ public class ModelUtils {
         }
 
         if (schema instanceof JsonSchema) { // 3.1 spec
-            return ((schema.getAdditionalProperties() instanceof JsonSchema) ||
+            return ((schema.getAdditionalProperties() instanceof Schema) ||
                     (schema.getAdditionalProperties() instanceof Boolean && (Boolean) schema.getAdditionalProperties()));
         } else { // 3.0 or 2.x spec
             return (schema instanceof MapSchema) ||
@@ -960,7 +960,7 @@ public class ModelUtils {
      * @param schema  potentially containing a '$ref'
      * @return schema without '$ref'
      */
-    public static Schema getReferencedSchema(OpenAPI openAPI, Schema schema) {
+    public static Schema<?> getReferencedSchema(OpenAPI openAPI, Schema schema) {
         if (schema == null) {
             return null;
         }
