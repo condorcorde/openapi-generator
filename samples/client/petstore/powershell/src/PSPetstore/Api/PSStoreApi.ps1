@@ -118,8 +118,13 @@ function Get-PSInventory {
 
         $LocalVarUri = '/store/inventory'
 
+        if ($Configuration["ApiKeyPrefix"] -and $Configuration["ApiKeyPrefix"]["api_key_name"]) {
+            $apiKeyPrefix = $Configuration["ApiKeyPrefix"]["api_key_name"]
+        } else {
+            $apiKeyPrefix = ""
+        }
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["api_key_name"]) {
-            $LocalVarHeaderParameters['api_key_name'] = $Configuration["ApiKeyPrefix"]["api_key_name"] + (CompatibleConvertFrom-SecureString -SecureString $Configuration["ApiKey"]["api_key_name"])
+            $LocalVarHeaderParameters['api_key_name'] = $apiKeyPrefix + (CompatibleConvertFrom-SecureString -SecureString $Configuration["ApiKey"]["api_key_name"])
             Write-Verbose ("Using API key 'api_key_name' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
 
@@ -135,6 +140,7 @@ function Get-PSInventory {
                                 -ReturnType "System.Collections.Hashtable" `
                                 -IsBodyNullable $false
 
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['api_key_name'])
         if ($WithHttpInfo.IsPresent) {
             return $LocalVarResult
         } else {

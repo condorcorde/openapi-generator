@@ -48,7 +48,7 @@ Convert a secure string to a standard string.
 .DESCRIPTION
 Convert a secure string to a standard string (with backward compatibility for PS 5).
 
-.PARAMETER InputVar
+.PARAMETER SecureString
 Specifies the secure string to convert to a standard string.
 
 .OUTPUTS

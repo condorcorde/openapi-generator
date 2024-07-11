@@ -229,8 +229,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
                                 -ReturnType "{{{returnType}}}" `
                                 -IsBodyNullable {{#bodyParam}}{{#isNullable}}$true{{/isNullable}}{{^isNullable}}$false{{/isNullable}}{{/bodyParam}}{{^bodyParam}}$false{{/bodyParam}}
 
-        # Zero authentication data from memory
-        {{#clearMemory}}
+        {{#authMethods}}
         {{#isApiKey}}
         {{#isKeyInHeader}}
         [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['{{{keyParamName}}}'])
@@ -250,7 +249,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['Authorization'])
         {{/isBasicBearer}}
         {{/isApiKey}}
-        {{/clearMemory}}
+        {{/authMethods}}
         {{#vendorExtensions.x-ps-return-type-one-of}}
         # process oneOf response
         $LocalVarResult["Response"] = ConvertFrom-{{apiNamePrefix}}JsonTo{{returnType}} (ConvertTo-Json $LocalVarResult["Response"] -Depth 100)
