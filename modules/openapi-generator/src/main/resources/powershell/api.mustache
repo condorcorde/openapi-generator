@@ -182,7 +182,6 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         } else {
             $apiKeyPrefix = ""
         }
-
         {{#isKeyInHeader}}
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["{{{keyParamName}}}"]) {
             $LocalVarHeaderParameters['{{{keyParamName}}}'] = $apiKeyPrefix + (CompatibleConvertFrom-SecureString -SecureString $Configuration["ApiKey"]["{{{keyParamName}}}"])
@@ -230,6 +229,28 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
                                 -ReturnType "{{{returnType}}}" `
                                 -IsBodyNullable {{#bodyParam}}{{#isNullable}}$true{{/isNullable}}{{^isNullable}}$false{{/isNullable}}{{/bodyParam}}{{^bodyParam}}$false{{/bodyParam}}
 
+        # Zero authentication data from memory
+        {{#clearMemory}}
+        {{#isApiKey}}
+        {{#isKeyInHeader}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['{{{keyParamName}}}'])
+        {{/isKeyInHeader}}
+        {{#isKeyInQuery}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarQueryParameters['{{{keyParamName}}}'])
+        {{/isKeyInQuery}}
+        {{#isKeyInCookie}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarCookieParameters['{{{name}}}'])
+        {{/isKeyInCookie}}
+        {{#isBasicBasic}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['Authorization'])
+        {{/isBasicBasic}}
+        {{#isBasicBearer}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarBytes)
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarBase64Text)
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['Authorization'])
+        {{/isBasicBearer}}
+        {{/isApiKey}}
+        {{/clearMemory}}
         {{#vendorExtensions.x-ps-return-type-one-of}}
         # process oneOf response
         $LocalVarResult["Response"] = ConvertFrom-{{apiNamePrefix}}JsonTo{{returnType}} (ConvertTo-Json $LocalVarResult["Response"] -Depth 100)
