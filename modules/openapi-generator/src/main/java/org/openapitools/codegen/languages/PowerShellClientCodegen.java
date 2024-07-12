@@ -770,7 +770,7 @@ public class PowerShellClientCodegen extends DefaultCodegen implements CodegenCo
         supportingFiles.add(new SupportingFile("Out-DebugParameter.mustache", infrastructureFolder + File.separator + "Private" + File.separator, "Out-DebugParameter.ps1"));
         supportingFiles.add(new SupportingFile("http_signature_auth.mustache", infrastructureFolder + "Private", apiNamePrefix + "HttpSignatureAuth.ps1"));
         supportingFiles.add(new SupportingFile("rsa_provider.mustache", infrastructureFolder + "Private", apiNamePrefix + "RSAEncryptionProvider.cs"));
-
+        supportingFiles.add(new SupportingFile("LocalFunctions.mustache", infrastructureFolder + "Private", apiNamePrefix + "LocalFunctions.ps1"));
 
         // en-US
         supportingFiles.add(new SupportingFile("about_Org.OpenAPITools.help.txt.mustache", infrastructureFolder + File.separator + "en-US" + File.separator + "about_" + packageName + ".help.txt"));

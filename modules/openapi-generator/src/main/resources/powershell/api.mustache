@@ -184,26 +184,26 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         }
         {{#isKeyInHeader}}
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["{{{keyParamName}}}"]) {
-            $LocalVarHeaderParameters['{{{keyParamName}}}'] = $apiKeyPrefix + $Configuration["ApiKey"]["{{{keyParamName}}}"]
+            $LocalVarHeaderParameters['{{{keyParamName}}}'] = $apiKeyPrefix + (CompatibleConvertFrom-SecureString -SecureString $Configuration["ApiKey"]["{{{keyParamName}}}"])
             Write-Verbose ("Using API key '{{{keyParamName}}}' in the header for authentication in {0}" -f $MyInvocation.MyCommand)
         }
         {{/isKeyInHeader}}
         {{#isKeyInQuery}}
         if ($Configuration["ApiKey"] -and $Configuration["ApiKey"]["{{{keyParamName}}}"]) {
-            $LocalVarQueryParameters['{{{keyParamName}}}'] = $apiKeyPrefix + $Configuration["ApiKey"]["{{{keyParamName}}}"]
+            $LocalVarQueryParameters['{{{keyParamName}}}'] = $apiKeyPrefix + (CompatibleConvertFrom-SecureString -SecureString $Configuration["ApiKey"]["{{{keyParamName}}}"])
             Write-Verbose ("Using API key `{{{keyParamName}}}` in the URL query for authentication in {0}" -f $MyInvocation.MyCommand)
         }
         {{/isKeyInQuery}}
         {{#isKeyInCookie}}
         if ($Configuration["Cookie"]) {
-            $LocalVarCookieParameters['{{{name}}}'] = $Configuration["Cookie"]
+            $LocalVarCookieParameters['{{{name}}}'] = CompatibleConvertFrom-SecureString -SecureString $Configuration["Cookie"]
             Write-Verbose ("Using API key `{{{name}}}` in the cookie for authentication in {0}" -f $MyInvocation.MyCommand)
         }
         {{/isKeyInCookie}}
         {{/isApiKey}}
         {{#isBasicBasic}}
         if ($Configuration["Username"] -and $Configuration["Password"]) {
-            $LocalVarBytes = [System.Text.Encoding]::UTF8.GetBytes($Configuration["Username"] + ":" + $Configuration["Password"])
+            $LocalVarBytes = [System.Text.Encoding]::UTF8.GetBytes($Configuration["Username"] + ":" + (CompatibleConvertFrom-SecureString -SecureString $Configuration["Password"]))
             $LocalVarBase64Text =[Convert]::ToBase64String($LocalVarBytes)
             $LocalVarHeaderParameters['Authorization'] = "Basic " + $LocalVarBase64Text
             Write-Verbose ("Using HTTP basic authentication in {0}" -f $MyInvocation.MyCommand)
@@ -211,7 +211,7 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
         {{/isBasicBasic}}
         {{#isBasicBearer}}
         if ($Configuration["AccessToken"]) {
-            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + (CompatibleConvertFrom-SecureString -SecureString $Configuration["AccessToken"])
             Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
         }
         {{/isBasicBearer}}
@@ -229,6 +229,27 @@ function {{{vendorExtensions.x-powershell-method-name}}} {
                                 -ReturnType "{{{returnType}}}" `
                                 -IsBodyNullable {{#bodyParam}}{{#isNullable}}$true{{/isNullable}}{{^isNullable}}$false{{/isNullable}}{{/bodyParam}}{{^bodyParam}}$false{{/bodyParam}}
 
+        {{#authMethods}}
+        {{#isApiKey}}
+        {{#isKeyInHeader}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['{{{keyParamName}}}'])
+        {{/isKeyInHeader}}
+        {{#isKeyInQuery}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarQueryParameters['{{{keyParamName}}}'])
+        {{/isKeyInQuery}}
+        {{#isKeyInCookie}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarCookieParameters['{{{name}}}'])
+        {{/isKeyInCookie}}
+        {{/isApiKey}}
+        {{#isBasicBasic}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarBytes)
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarBase64Text)
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['Authorization'])
+        {{/isBasicBasic}}
+        {{#isBasicBearer}}
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($LocalVarHeaderParameters['Authorization'])
+        {{/isBasicBearer}}
+        {{/authMethods}}
         {{#vendorExtensions.x-ps-return-type-one-of}}
         # process oneOf response
         $LocalVarResult["Response"] = ConvertFrom-{{apiNamePrefix}}JsonTo{{returnType}} (ConvertTo-Json $LocalVarResult["Response"] -Depth 100)

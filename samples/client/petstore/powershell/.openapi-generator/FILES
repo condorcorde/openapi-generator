@@ -169,5 +169,6 @@ src/PSPetstore/Private/Get-CommonParameters.ps1
 src/PSPetstore/Private/Out-DebugParameter.ps1
 src/PSPetstore/Private/PSApiClient.ps1
 src/PSPetstore/Private/PSHttpSignatureAuth.ps1
+src/PSPetstore/Private/PSLocalFunctions.ps1
 src/PSPetstore/Private/PSRSAEncryptionProvider.cs
 src/PSPetstore/en-US/about_PSPetstore.help.txt
