@@ -59,9 +59,10 @@ function CompatibleConvertFrom-SecureString {
             return ConvertFrom-SecureString -SecureString $SecureString -AsPlainText
         }
         5 {
-            return [System.Runtime.InteropServices.Marshal]::PtrToStringAuto(
-                [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString)
-            )
+            $bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString)
+            $s = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr)
+            [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+            return $s
         }
     }
 }
