@@ -66,6 +66,7 @@ DanishPig<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToDanishPig {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

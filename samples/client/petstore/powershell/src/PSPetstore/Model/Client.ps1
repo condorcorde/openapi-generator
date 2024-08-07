@@ -62,6 +62,7 @@ Client<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToClient {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

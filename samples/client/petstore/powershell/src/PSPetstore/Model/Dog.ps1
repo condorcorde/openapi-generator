@@ -78,6 +78,7 @@ Dog<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToDog {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

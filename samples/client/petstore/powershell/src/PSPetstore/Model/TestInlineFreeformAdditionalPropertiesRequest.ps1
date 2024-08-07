@@ -62,6 +62,7 @@ TestInlineFreeformAdditionalPropertiesRequest<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToTestInlineFreeformAdditionalPropertiesRequest {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

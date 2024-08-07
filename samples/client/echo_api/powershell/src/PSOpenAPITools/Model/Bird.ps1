@@ -69,6 +69,7 @@ Bird<PSCustomObject>
 #>
 function ConvertFrom-JsonToBird {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

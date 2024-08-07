@@ -63,6 +63,7 @@ TestFormObjectMultipartRequestMarker<PSCustomObject>
 #>
 function ConvertFrom-JsonToTestFormObjectMultipartRequestMarker {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

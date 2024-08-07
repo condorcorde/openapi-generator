@@ -128,6 +128,7 @@ NullableClass<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToNullableClass {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

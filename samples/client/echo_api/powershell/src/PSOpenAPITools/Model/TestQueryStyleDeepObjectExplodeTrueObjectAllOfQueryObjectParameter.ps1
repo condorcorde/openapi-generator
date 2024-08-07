@@ -81,6 +81,7 @@ TestQueryStyleDeepObjectExplodeTrueObjectAllOfQueryObjectParameter<PSCustomObjec
 #>
 function ConvertFrom-JsonToTestQueryStyleDeepObjectExplodeTrueObjectAllOfQueryObjectParameter {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -88,6 +88,7 @@ DataQuery<PSCustomObject>
 #>
 function ConvertFrom-JsonToDataQuery {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

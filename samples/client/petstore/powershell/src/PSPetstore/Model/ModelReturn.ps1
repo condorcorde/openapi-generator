@@ -62,6 +62,7 @@ ModelReturn<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToModelReturn {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

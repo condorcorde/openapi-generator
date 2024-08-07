@@ -76,6 +76,7 @@ IsoscelesTriangle<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToIsoscelesTriangle {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -25,6 +25,7 @@ Shape<PSCustomObject>
 function ConvertFrom-PSJsonToShape {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

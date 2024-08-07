@@ -74,6 +74,7 @@ ApiResponse<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToApiResponse {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

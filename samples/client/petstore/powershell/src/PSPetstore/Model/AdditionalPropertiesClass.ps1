@@ -104,6 +104,7 @@ AdditionalPropertiesClass<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToAdditionalPropertiesClass {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

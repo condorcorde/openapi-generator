@@ -72,6 +72,7 @@ Animal<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToAnimal {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

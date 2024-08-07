@@ -80,6 +80,7 @@ Drawing<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToDrawing {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -83,6 +83,7 @@ NumberPropertiesOnly<PSCustomObject>
 #>
 function ConvertFrom-JsonToNumberPropertiesOnly {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

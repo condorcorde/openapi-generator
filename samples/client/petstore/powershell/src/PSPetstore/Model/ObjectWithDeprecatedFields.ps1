@@ -86,6 +86,7 @@ ObjectWithDeprecatedFields<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToObjectWithDeprecatedFields {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

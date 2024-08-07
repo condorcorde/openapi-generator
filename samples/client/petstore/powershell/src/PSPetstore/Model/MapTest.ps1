@@ -81,6 +81,7 @@ MapTest<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToMapTest {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

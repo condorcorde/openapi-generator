@@ -74,6 +74,7 @@ ArrayTest<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToArrayTest {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

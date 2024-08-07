@@ -84,6 +84,7 @@ Name<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToName {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

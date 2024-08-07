@@ -18,6 +18,7 @@ JSON object
 function ConvertFrom-{{{apiNamePrefix}}}JsonTo{{{classname}}} {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

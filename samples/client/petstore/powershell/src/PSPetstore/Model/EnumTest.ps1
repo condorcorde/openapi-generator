@@ -102,6 +102,7 @@ EnumTest<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToEnumTest {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

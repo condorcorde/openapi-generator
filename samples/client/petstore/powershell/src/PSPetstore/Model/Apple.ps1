@@ -70,6 +70,7 @@ Apple<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToApple {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

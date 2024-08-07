@@ -70,6 +70,7 @@ Query<PSCustomObject>
 #>
 function ConvertFrom-JsonToQuery {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -62,6 +62,7 @@ ClassModel<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToClassModel {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

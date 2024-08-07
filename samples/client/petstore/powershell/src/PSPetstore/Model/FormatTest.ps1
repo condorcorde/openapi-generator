@@ -219,6 +219,7 @@ FormatTest<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToFormatTest {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

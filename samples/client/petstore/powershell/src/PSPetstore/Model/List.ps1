@@ -62,6 +62,7 @@ List<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToList {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

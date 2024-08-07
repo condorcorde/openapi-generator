@@ -62,6 +62,7 @@ FooGetDefaultResponse<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToFooGetDefaultResponse {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

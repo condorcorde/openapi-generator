@@ -63,6 +63,7 @@ TestQueryStyleFormExplodeTrueArrayStringQueryObjectParameter<PSCustomObject>
 #>
 function ConvertFrom-JsonToTestQueryStyleFormExplodeTrueArrayStringQueryObjectParameter {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

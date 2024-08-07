@@ -72,6 +72,7 @@ BananaReq<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToBananaReq {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

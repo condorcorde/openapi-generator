@@ -62,6 +62,7 @@ Foo<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToFoo {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

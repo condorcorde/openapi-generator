@@ -62,6 +62,7 @@ Banana<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToBanana {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

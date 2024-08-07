@@ -25,6 +25,7 @@ Pig<PSCustomObject>
 function ConvertFrom-PSJsonToPig {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

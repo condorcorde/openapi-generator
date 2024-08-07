@@ -25,6 +25,7 @@ Quadrilateral<PSCustomObject>
 function ConvertFrom-PSJsonToQuadrilateral {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

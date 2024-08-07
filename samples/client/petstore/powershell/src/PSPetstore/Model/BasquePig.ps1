@@ -66,6 +66,7 @@ BasquePig<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToBasquePig {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

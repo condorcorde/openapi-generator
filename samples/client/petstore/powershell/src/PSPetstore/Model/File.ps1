@@ -62,6 +62,7 @@ File<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToFile {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

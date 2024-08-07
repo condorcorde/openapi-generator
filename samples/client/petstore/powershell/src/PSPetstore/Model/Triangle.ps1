@@ -25,6 +25,7 @@ Triangle<PSCustomObject>
 function ConvertFrom-PSJsonToTriangle {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -70,6 +70,7 @@ EnumArrays<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToEnumArrays {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

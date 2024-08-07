@@ -93,6 +93,7 @@ Order<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToOrder {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

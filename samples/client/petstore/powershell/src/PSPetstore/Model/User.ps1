@@ -128,6 +128,7 @@ User<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToUser {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

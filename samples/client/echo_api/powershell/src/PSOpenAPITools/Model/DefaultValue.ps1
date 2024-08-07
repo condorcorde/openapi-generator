@@ -106,6 +106,7 @@ DefaultValue<PSCustomObject>
 #>
 function ConvertFrom-JsonToDefaultValue {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

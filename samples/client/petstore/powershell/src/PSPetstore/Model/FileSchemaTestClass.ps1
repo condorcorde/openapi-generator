@@ -68,6 +68,7 @@ FileSchemaTestClass<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToFileSchemaTestClass {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

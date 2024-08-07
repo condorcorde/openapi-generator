@@ -66,6 +66,7 @@ TriangleInterface<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToTriangleInterface {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

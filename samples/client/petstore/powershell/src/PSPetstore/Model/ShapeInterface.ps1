@@ -66,6 +66,7 @@ ShapeInterface<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToShapeInterface {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

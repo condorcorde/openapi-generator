@@ -25,6 +25,7 @@ FruitReq<PSCustomObject>
 function ConvertFrom-PSJsonToFruitReq {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

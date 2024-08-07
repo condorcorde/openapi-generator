@@ -62,6 +62,7 @@ NumberOnly<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToNumberOnly {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

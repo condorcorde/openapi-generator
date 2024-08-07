@@ -66,6 +66,7 @@ QuadrilateralInterface<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToQuadrilateralInterface {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

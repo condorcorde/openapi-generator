@@ -102,6 +102,7 @@ Pet<PSCustomObject>
 #>
 function ConvertFrom-JsonToPet {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

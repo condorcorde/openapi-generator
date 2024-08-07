@@ -25,6 +25,7 @@ NullableShape<PSCustomObject>
 function ConvertFrom-PSJsonToNullableShape {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -68,6 +68,7 @@ SpecialModelName<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToSpecialModelName {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

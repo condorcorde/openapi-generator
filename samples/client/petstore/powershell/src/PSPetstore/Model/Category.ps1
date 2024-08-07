@@ -72,6 +72,7 @@ Category<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToCategory {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

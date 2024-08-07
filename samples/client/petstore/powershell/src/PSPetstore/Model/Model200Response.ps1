@@ -68,6 +68,7 @@ Model200Response<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToModel200Response {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

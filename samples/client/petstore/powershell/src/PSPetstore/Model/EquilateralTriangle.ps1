@@ -76,6 +76,7 @@ EquilateralTriangle<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToEquilateralTriangle {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

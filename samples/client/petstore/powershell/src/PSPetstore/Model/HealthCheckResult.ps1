@@ -62,6 +62,7 @@ HealthCheckResult<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToHealthCheckResult {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

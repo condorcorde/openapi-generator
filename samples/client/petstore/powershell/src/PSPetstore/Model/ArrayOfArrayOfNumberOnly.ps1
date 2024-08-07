@@ -62,6 +62,7 @@ ArrayOfArrayOfNumberOnly<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToArrayOfArrayOfNumberOnly {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -76,6 +76,7 @@ SimpleQuadrilateral<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToSimpleQuadrilateral {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

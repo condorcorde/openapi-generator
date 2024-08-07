@@ -68,6 +68,7 @@ HasOnlyReadOnly<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToHasOnlyReadOnly {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

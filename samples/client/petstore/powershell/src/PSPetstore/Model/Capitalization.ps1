@@ -92,6 +92,7 @@ Capitalization<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToCapitalization {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

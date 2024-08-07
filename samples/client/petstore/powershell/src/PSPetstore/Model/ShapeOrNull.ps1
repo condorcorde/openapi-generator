@@ -25,6 +25,7 @@ ShapeOrNull<PSCustomObject>
 function ConvertFrom-PSJsonToShapeOrNull {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

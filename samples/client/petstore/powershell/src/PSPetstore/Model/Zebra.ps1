@@ -73,6 +73,7 @@ Zebra<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToZebra {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

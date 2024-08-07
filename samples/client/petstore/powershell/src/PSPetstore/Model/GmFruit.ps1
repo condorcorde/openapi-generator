@@ -25,6 +25,7 @@ GmFruit<PSCustomObject>
 function ConvertFrom-PSJsonToGmFruit {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -25,6 +25,7 @@ Fruit<PSCustomObject>
 function ConvertFrom-PSJsonToFruit {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

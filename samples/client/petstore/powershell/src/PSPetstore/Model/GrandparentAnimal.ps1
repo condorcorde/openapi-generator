@@ -66,6 +66,7 @@ GrandparentAnimal<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToGrandparentAnimal {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

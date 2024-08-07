@@ -74,6 +74,7 @@ OuterComposite<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToOuterComposite {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

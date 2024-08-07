@@ -62,6 +62,7 @@ NewModel<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToNewModel {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -78,6 +78,7 @@ Whale<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToWhale {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

@@ -68,6 +68,7 @@ ReadOnlyFirst<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToReadOnlyFirst {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

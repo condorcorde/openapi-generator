@@ -68,6 +68,7 @@ Tag<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToTag {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

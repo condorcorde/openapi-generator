@@ -66,6 +66,7 @@ ParentPet<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToParentPet {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

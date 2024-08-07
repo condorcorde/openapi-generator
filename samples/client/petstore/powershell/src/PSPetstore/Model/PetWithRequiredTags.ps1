@@ -105,6 +105,7 @@ PetWithRequiredTags<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToPetWithRequiredTags {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

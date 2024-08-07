@@ -78,6 +78,7 @@ Cat<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToCat {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

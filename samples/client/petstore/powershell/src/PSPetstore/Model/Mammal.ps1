@@ -25,6 +25,7 @@ Mammal<PSCustomObject>
 function ConvertFrom-PSJsonToMammal {
     [CmdletBinding()]
     Param (
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

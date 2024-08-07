@@ -214,6 +214,7 @@ Json object
 #>
 function ConvertFrom-{{{apiNamePrefix}}}JsonTo{{{classname}}} {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

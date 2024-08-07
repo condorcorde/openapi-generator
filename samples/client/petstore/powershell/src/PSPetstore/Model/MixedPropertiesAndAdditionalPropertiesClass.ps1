@@ -74,6 +74,7 @@ MixedPropertiesAndAdditionalPropertiesClass<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToMixedPropertiesAndAdditionalPropertiesClass {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

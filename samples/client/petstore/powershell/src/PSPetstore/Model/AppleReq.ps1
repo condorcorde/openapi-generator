@@ -72,6 +72,7 @@ AppleReq<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToAppleReq {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )

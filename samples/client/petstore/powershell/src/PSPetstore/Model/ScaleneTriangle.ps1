@@ -76,6 +76,7 @@ ScaleneTriangle<PSCustomObject>
 #>
 function ConvertFrom-PSJsonToScaleneTriangle {
     Param(
+        [Parameter(ValueFromPipeline=$true)]
         [AllowEmptyString()]
         [string]$Json
     )
